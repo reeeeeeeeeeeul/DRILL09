@@ -70,6 +70,17 @@ def get_animation_row(moving, facing_right):
     return IDLE_RIGHT_ROW if facing_right else IDLE_LEFT_ROW
 
 
+def update_animation(frame, animation_time, moving, elapsed_time):
+    if not moving:
+        return 0, 0
+
+    animation_time += elapsed_time
+    while animation_time >= FRAME_DURATION:
+        animation_time -= FRAME_DURATION
+        frame = (frame + 1) % FRAME_COUNT
+    return frame, animation_time
+
+
 def draw_character(character, x, y, frame, moving, facing_right):
     row = get_animation_row(moving, facing_right)
     character.clip_draw(
@@ -111,14 +122,9 @@ def main():
 
         x, y = update_position(x, y, horizontal, vertical, elapsed_time)
 
-        if moving:
-            animation_time += elapsed_time
-            while animation_time >= FRAME_DURATION:
-                animation_time -= FRAME_DURATION
-                frame = (frame + 1) % FRAME_COUNT
-        else:
-            animation_time = 0
-            frame = 0
+        frame, animation_time = update_animation(
+            frame, animation_time, moving, elapsed_time
+        )
 
         clear_canvas()
         background.draw(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
