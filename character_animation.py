@@ -10,6 +10,7 @@ SPRITE_SIZE = 100
 FRAME_COUNT = 8
 FRAME_DURATION = 0.08
 MOVE_SPEED = 300
+MAX_ELAPSED_TIME = 0.1
 
 IDLE_RIGHT_ROW = 3
 IDLE_LEFT_ROW = 2
@@ -120,7 +121,7 @@ def main():
 
     while running:
         current_time = get_time()
-        elapsed_time = min(current_time - previous_time, 0.1)
+        elapsed_time = min(current_time - previous_time, MAX_ELAPSED_TIME)
         previous_time = current_time
 
         running = handle_events(keys)
