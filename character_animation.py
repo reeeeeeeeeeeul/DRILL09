@@ -139,6 +139,10 @@ def get_elapsed_time(previous_time):
     return current_time, min(current_time - previous_time, MAX_ELAPSED_TIME)
 
 
+def close_resources():
+    close_canvas()
+
+
 def main():
     open_canvas(SCREEN_WIDTH, SCREEN_HEIGHT)
     background, character = load_resources()
@@ -169,7 +173,7 @@ def main():
 
         render(background, character, x, y, frame, moving, facing_right)
 
-    close_canvas()
+    close_resources()
 
 
 if __name__ == '__main__':
