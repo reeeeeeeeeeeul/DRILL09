@@ -43,6 +43,10 @@ def create_key_state():
     }
 
 
+def load_resources():
+    return load_image(BACKGROUND_FILE), load_image(CHARACTER_FILE)
+
+
 def get_movement(keys):
     horizontal = int(keys[SDLK_RIGHT]) - int(keys[SDLK_LEFT])
     vertical = int(keys[SDLK_UP]) - int(keys[SDLK_DOWN])
@@ -108,8 +112,7 @@ def draw_character(character, x, y, frame, moving, facing_right):
 
 def main():
     open_canvas(SCREEN_WIDTH, SCREEN_HEIGHT)
-    background = load_image(BACKGROUND_FILE)
-    character = load_image(CHARACTER_FILE)
+    background, character = load_resources()
 
     keys = create_key_state()
     x, y = SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2
