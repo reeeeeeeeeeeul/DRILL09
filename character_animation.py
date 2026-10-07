@@ -64,11 +64,14 @@ def update_position(x, y, horizontal, vertical, elapsed_time):
     return x, y
 
 
-def draw_character(character, x, y, frame, moving, facing_right):
+def get_animation_row(moving, facing_right):
     if moving:
-        row = MOVE_RIGHT_ROW if facing_right else MOVE_LEFT_ROW
-    else:
-        row = IDLE_RIGHT_ROW if facing_right else IDLE_LEFT_ROW
+        return MOVE_RIGHT_ROW if facing_right else MOVE_LEFT_ROW
+    return IDLE_RIGHT_ROW if facing_right else IDLE_LEFT_ROW
+
+
+def draw_character(character, x, y, frame, moving, facing_right):
+    row = get_animation_row(moving, facing_right)
     character.clip_draw(
         frame * SPRITE_SIZE,
         row * SPRITE_SIZE,
