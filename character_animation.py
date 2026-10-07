@@ -7,6 +7,7 @@ SCREEN_WIDTH, SCREEN_HEIGHT = 1280, 1024
 BACKGROUND_FILE = 'TUK_GROUND.png'
 CHARACTER_FILE = 'animation_sheet.png'
 SPRITE_SIZE = 100
+SCREEN_MARGIN = SPRITE_SIZE / 2
 FRAME_COUNT = 8
 FRAME_DURATION = 0.08
 MOVE_SPEED = 300
@@ -59,9 +60,8 @@ def clamp(value, minimum, maximum):
 def update_position(x, y, horizontal, vertical, elapsed_time):
     x += horizontal * MOVE_SPEED * elapsed_time
     y += vertical * MOVE_SPEED * elapsed_time
-    half_sprite = SPRITE_SIZE / 2
-    x = clamp(x, half_sprite, SCREEN_WIDTH - half_sprite)
-    y = clamp(y, half_sprite, SCREEN_HEIGHT - half_sprite)
+    x = clamp(x, SCREEN_MARGIN, SCREEN_WIDTH - SCREEN_MARGIN)
+    y = clamp(y, SCREEN_MARGIN, SCREEN_HEIGHT - SCREEN_MARGIN)
     return x, y
 
 
