@@ -4,6 +4,8 @@ from pico2d import *
 
 
 SCREEN_WIDTH, SCREEN_HEIGHT = 1280, 1024
+BACKGROUND_FILE = 'TUK_GROUND.png'
+CHARACTER_FILE = 'animation_sheet.png'
 SPRITE_SIZE = 100
 FRAME_COUNT = 8
 FRAME_DURATION = 0.08
@@ -61,8 +63,8 @@ def draw_character(character, x, y, frame, moving, facing_right):
 
 def main():
     open_canvas(SCREEN_WIDTH, SCREEN_HEIGHT)
-    background = load_image('TUK_GROUND.png')
-    character = load_image('animation_sheet.png')
+    background = load_image(BACKGROUND_FILE)
+    character = load_image(CHARACTER_FILE)
 
     keys = {
         SDLK_UP: False,
