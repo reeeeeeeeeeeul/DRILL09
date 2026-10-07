@@ -103,6 +103,10 @@ def get_frame_source_x(frame):
     return frame * SPRITE_SIZE
 
 
+def get_frame_source_y(row):
+    return row * SPRITE_SIZE
+
+
 def draw_background(background):
     background.draw(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
@@ -119,7 +123,7 @@ def draw_character(character, x, y, frame, moving, facing_right):
     row = get_animation_row(moving, facing_right)
     character.clip_draw(
         get_frame_source_x(frame),
-        row * SPRITE_SIZE,
+        get_frame_source_y(row),
         SPRITE_SIZE,
         SPRITE_SIZE,
         x,
