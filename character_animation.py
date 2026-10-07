@@ -57,6 +57,10 @@ def get_movement(keys):
     return horizontal, vertical
 
 
+def is_moving(horizontal, vertical):
+    return horizontal != 0 or vertical != 0
+
+
 def clamp(value, minimum, maximum):
     return max(minimum, min(value, maximum))
 
@@ -129,7 +133,7 @@ def main():
 
         running = handle_events(keys)
         horizontal, vertical = get_movement(keys)
-        moving = horizontal != 0 or vertical != 0
+        moving = is_moving(horizontal, vertical)
 
         facing_right = update_facing(horizontal, facing_right)
 
