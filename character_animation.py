@@ -81,6 +81,10 @@ def update_animation(frame, animation_time, moving, elapsed_time):
     return frame, animation_time
 
 
+def draw_background(background):
+    background.draw(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
+
 def draw_character(character, x, y, frame, moving, facing_right):
     row = get_animation_row(moving, facing_right)
     character.clip_draw(
@@ -127,7 +131,7 @@ def main():
         )
 
         clear_canvas()
-        background.draw(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+        draw_background(background)
         draw_character(character, x, y, frame, moving, facing_right)
         update_canvas()
 
