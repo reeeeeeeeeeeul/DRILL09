@@ -69,12 +69,17 @@ def clamp(value, minimum, maximum):
     return max(minimum, min(value, maximum))
 
 
+def clamp_to_screen(x, y):
+    return (
+        clamp(x, SCREEN_MARGIN, SCREEN_WIDTH - SCREEN_MARGIN),
+        clamp(y, SCREEN_MARGIN, SCREEN_HEIGHT - SCREEN_MARGIN),
+    )
+
+
 def update_position(x, y, horizontal, vertical, elapsed_time):
     x += horizontal * MOVE_SPEED * elapsed_time
     y += vertical * MOVE_SPEED * elapsed_time
-    x = clamp(x, SCREEN_MARGIN, SCREEN_WIDTH - SCREEN_MARGIN)
-    y = clamp(y, SCREEN_MARGIN, SCREEN_HEIGHT - SCREEN_MARGIN)
-    return x, y
+    return clamp_to_screen(x, y)
 
 
 def get_animation_row(moving, facing_right):
