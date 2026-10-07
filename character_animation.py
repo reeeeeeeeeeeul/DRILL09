@@ -32,6 +32,15 @@ def handle_events(keys):
     return True
 
 
+def create_key_state():
+    return {
+        SDLK_UP: False,
+        SDLK_DOWN: False,
+        SDLK_LEFT: False,
+        SDLK_RIGHT: False,
+    }
+
+
 def get_movement(keys):
     horizontal = int(keys[SDLK_RIGHT]) - int(keys[SDLK_LEFT])
     vertical = int(keys[SDLK_UP]) - int(keys[SDLK_DOWN])
@@ -66,12 +75,7 @@ def main():
     background = load_image(BACKGROUND_FILE)
     character = load_image(CHARACTER_FILE)
 
-    keys = {
-        SDLK_UP: False,
-        SDLK_DOWN: False,
-        SDLK_LEFT: False,
-        SDLK_RIGHT: False,
-    }
+    keys = create_key_state()
     x, y = SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2
     frame = 0
     animation_time = 0
