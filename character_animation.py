@@ -121,6 +121,11 @@ def render(background, character, x, y, frame, moving, facing_right):
     update_canvas()
 
 
+def get_elapsed_time(previous_time):
+    current_time = get_time()
+    return current_time, min(current_time - previous_time, MAX_ELAPSED_TIME)
+
+
 def main():
     open_canvas(SCREEN_WIDTH, SCREEN_HEIGHT)
     background, character = load_resources()
@@ -134,8 +139,7 @@ def main():
     previous_time = get_time()
 
     while running:
-        current_time = get_time()
-        elapsed_time = min(current_time - previous_time, MAX_ELAPSED_TIME)
+        current_time, elapsed_time = get_elapsed_time(previous_time)
         previous_time = current_time
 
         running = handle_events(keys)
