@@ -55,6 +55,15 @@ def clamp(value, minimum, maximum):
     return max(minimum, min(value, maximum))
 
 
+def update_position(x, y, horizontal, vertical, elapsed_time):
+    x += horizontal * MOVE_SPEED * elapsed_time
+    y += vertical * MOVE_SPEED * elapsed_time
+    half_sprite = SPRITE_SIZE / 2
+    x = clamp(x, half_sprite, SCREEN_WIDTH - half_sprite)
+    y = clamp(y, half_sprite, SCREEN_HEIGHT - half_sprite)
+    return x, y
+
+
 def draw_character(character, x, y, frame, moving, facing_right):
     if moving:
         row = MOVE_RIGHT_ROW if facing_right else MOVE_LEFT_ROW
@@ -97,11 +106,7 @@ def main():
         elif horizontal < 0:
             facing_right = False
 
-        x += horizontal * MOVE_SPEED * elapsed_time
-        y += vertical * MOVE_SPEED * elapsed_time
-        half_sprite = SPRITE_SIZE / 2
-        x = clamp(x, half_sprite, SCREEN_WIDTH - half_sprite)
-        y = clamp(y, half_sprite, SCREEN_HEIGHT - half_sprite)
+        x, y = update_position(x, y, horizontal, vertical, elapsed_time)
 
         if moving:
             animation_time += elapsed_time
