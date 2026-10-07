@@ -7,6 +7,7 @@ SCREEN_WIDTH, SCREEN_HEIGHT = 1280, 1024
 BACKGROUND_FILE = 'TUK_GROUND.png'
 CHARACTER_FILE = 'animation_sheet.png'
 EXIT_KEY = SDLK_ESCAPE
+INITIAL_X, INITIAL_Y = SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2
 SPRITE_SIZE = 100
 SCREEN_MARGIN = SPRITE_SIZE / 2
 FRAME_COUNT = 8
@@ -132,7 +133,7 @@ def main():
     background, character = load_resources()
 
     keys = create_key_state()
-    x, y = SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2
+    x, y = INITIAL_X, INITIAL_Y
     frame = 0
     animation_time = 0
     facing_right = True
