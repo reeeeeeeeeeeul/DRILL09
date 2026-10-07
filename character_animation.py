@@ -85,6 +85,14 @@ def draw_background(background):
     background.draw(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
 
+def update_facing(horizontal, facing_right):
+    if horizontal > 0:
+        return True
+    if horizontal < 0:
+        return False
+    return facing_right
+
+
 def draw_character(character, x, y, frame, moving, facing_right):
     row = get_animation_row(moving, facing_right)
     character.clip_draw(
@@ -119,10 +127,7 @@ def main():
         horizontal, vertical = get_movement(keys)
         moving = horizontal != 0 or vertical != 0
 
-        if horizontal > 0:
-            facing_right = True
-        elif horizontal < 0:
-            facing_right = False
+        facing_right = update_facing(horizontal, facing_right)
 
         x, y = update_position(x, y, horizontal, vertical, elapsed_time)
 
