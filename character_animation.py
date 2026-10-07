@@ -94,6 +94,10 @@ def update_animation(frame, animation_time, moving, elapsed_time):
     return frame, animation_time
 
 
+def get_frame_source_x(frame):
+    return frame * SPRITE_SIZE
+
+
 def draw_background(background):
     background.draw(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
@@ -109,7 +113,7 @@ def update_facing(horizontal, facing_right):
 def draw_character(character, x, y, frame, moving, facing_right):
     row = get_animation_row(moving, facing_right)
     character.clip_draw(
-        frame * SPRITE_SIZE,
+        get_frame_source_x(frame),
         row * SPRITE_SIZE,
         SPRITE_SIZE,
         SPRITE_SIZE,
