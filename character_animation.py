@@ -84,7 +84,7 @@ def get_animation_row(moving, facing_right):
 
 def update_animation(frame, animation_time, moving, elapsed_time):
     if not moving:
-        return 0, 0
+        return INITIAL_FRAME, 0
 
     animation_time += elapsed_time
     while animation_time >= FRAME_DURATION:
