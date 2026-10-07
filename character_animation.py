@@ -114,6 +114,13 @@ def draw_character(character, x, y, frame, moving, facing_right):
     )
 
 
+def render(background, character, x, y, frame, moving, facing_right):
+    clear_canvas()
+    draw_background(background)
+    draw_character(character, x, y, frame, moving, facing_right)
+    update_canvas()
+
+
 def main():
     open_canvas(SCREEN_WIDTH, SCREEN_HEIGHT)
     background, character = load_resources()
@@ -143,10 +150,7 @@ def main():
             frame, animation_time, moving, elapsed_time
         )
 
-        clear_canvas()
-        draw_background(background)
-        draw_character(character, x, y, frame, moving, facing_right)
-        update_canvas()
+        render(background, character, x, y, frame, moving, facing_right)
 
     close_canvas()
 
