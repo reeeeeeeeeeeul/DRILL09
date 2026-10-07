@@ -11,6 +11,7 @@ INITIAL_X, INITIAL_Y = SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2
 SPRITE_SIZE = 100
 SCREEN_MARGIN = SPRITE_SIZE / 2
 FRAME_COUNT = 8
+INITIAL_FRAME = 0
 FRAME_DURATION = 0.08
 MOVE_SPEED = 300
 MAX_ELAPSED_TIME = 0.1
@@ -134,7 +135,7 @@ def main():
 
     keys = create_key_state()
     x, y = INITIAL_X, INITIAL_Y
-    frame = 0
+    frame = INITIAL_FRAME
     animation_time = 0
     facing_right = True
     running = True
