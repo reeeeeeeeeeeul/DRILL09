@@ -6,6 +6,7 @@ from pico2d import *
 SCREEN_WIDTH, SCREEN_HEIGHT = 1280, 1024
 BACKGROUND_FILE = 'TUK_GROUND.png'
 CHARACTER_FILE = 'animation_sheet.png'
+EXIT_KEY = SDLK_ESCAPE
 SPRITE_SIZE = 100
 SCREEN_MARGIN = SPRITE_SIZE / 2
 FRAME_COUNT = 8
@@ -25,7 +26,7 @@ def handle_events(keys):
         if event.type == SDL_QUIT:
             return False
         if event.type == SDL_KEYDOWN:
-            if event.key == SDLK_ESCAPE:
+            if event.key == EXIT_KEY:
                 return False
             if event.key in keys:
                 keys[event.key] = True
